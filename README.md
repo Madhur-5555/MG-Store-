@@ -2,339 +2,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MKS Wonders - Complete E-Commerce</title>
+  <title>MKS Wonders - E-commerce</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
-    header {
-      background: #3f51b5;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      text-align: center;
-      padding: 20px;
-      background: #e8eaf6;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    button {
-      padding: 10px;
-      background: #3f51b5;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .cart-container {
-      padding: 20px;
-    }
-    .cart-item {
-      background: #fff;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .checkout-form {
-      margin-top: 30px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
+    header { background: #222; color: white; padding: 1rem; text-align: center; }
+    .container { padding: 20px; max-width: 1000px; margin: auto; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .product { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .product img { max-width: 100%; border-radius: 8px; }
+    .product h3, .product p { margin: 5px 0; }
+    button { background: #007bff; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .cart { margin-top: 40px; background: #fff; padding: 20px; border-radius: 10px; }
+    .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    input, textarea { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
   <header>
     <h1>MKS Wonders</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#books">Books</a>
-      <a href="#toys">Toys</a>
-      <a href="#stationery">Stationery</a>
-      <a href="#gifts">Gifts</a>
-      <a href="#birthday">Birthday Items</a>
-      <a href="#cart">Cart</a>
-    </nav>
-  </header>  <section class="hero">
-    <h2>Welcome to MKS Wonders</h2>
-    <p>Books, Toys, Stationery, Gifts & More – Delivered with Wonder!</p>
-  </section>  <section id="products" class="product-grid">
-    <div class="product" data-category="books">
-      <img src="https://via.placeholder.com/200x150" alt="Book">
-      <h3>Magic of Words</h3>
-      <p>Rs. 299</p>
-      <button onclick="addToCart('Magic of Words', 299)">Add to Cart</button>
-    </div>
-    <div class="product" data-category="toys">
-      <img src="https://via.placeholder.com/200x150" alt="Toy">
-      <h3>Robo Car</h3>
-      <p>Rs. 499</p>
-      <button onclick="addToCart('Robo Car', 499)">Add to Cart</button>
-    </div>
-    <div class="product" data-category="stationery">
-      <img src="https://via.placeholder.com/200x150" alt="Stationery">
-      <h3>Creative Pen Set</h3>
-      <p>Rs. 199</p>
-      <button onclick="addToCart('Creative Pen Set', 199)">Add to Cart</button>
-    </div>
-    <div class="product" data-category="gifts">
-      <img src="https://via.placeholder.com/200x150" alt="Gift">
-      <h3>Mini Teddy Gift Box</h3>
-      <p>Rs. 349</p>
-      <button onclick="addToCart('Mini Teddy Gift Box', 349)">Add to Cart</button>
-    </div>
-    <div class="product" data-category="birthday">
-      <img src="https://via.placeholder.com/200x150" alt="Birthday">
-      <h3>Birthday Decoration Kit</h3>
-      <p>Rs. 599</p>
-      <button onclick="addToCart('Birthday Decoration Kit', 599)">Add to Cart</button>
-    </div>
-  </section>  <section id="cart" class="cart-container">
-    <h2>Your Cart</h2>
-    <div id="cartItems"></div>
-    <h3>Total: Rs. <span id="total">0</span></h3><div class="checkout-form">
-  <h2>Checkout</h2>
-  <input type="text" id="buyerName" placeholder="Your Name">
-  <input type="text" id="buyerAddress" placeholder="Your Address">
-  <input type="text" id="buyerPhone" placeholder="Mobile Number">
-  <textarea id="buyerNote" placeholder="Note (optional)"></textarea>
-  <button onclick="placeOrder()">Place Order</button>
+    <p>Books | Toys | Stationery | Gifts | Birthday Items</p>
+  </header>  <div class="container">
+    <div class="product-grid" id="product-list"></div><div class="cart" id="cart">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <h3 id="total">Total: ₹0</h3>
+
+  <h3>Place Your Order</h3>
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="tel" id="phone" placeholder="Your Phone Number" required>
+  <textarea id="address" placeholder="Delivery Address" required></textarea>
+  <button onclick="placeOrder()">Place Order on WhatsApp</button>
 </div>
 
-  </section>  <script>
-    function addToCart(name, price) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({ name, price });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${name} added to cart!`);
-      showCart();
+  </div>  <script>
+    const products = [
+      { name: "The Magic of Words", price: 299 },
+      { name: "Robotic Toy Car", price: 499 },
+      { name: "Birthday Gift Box", price: 399 },
+      { name: "Color Stationery Set", price: 199 },
+      { name: "Fun Story Book", price: 249 }
+    ];
+
+    const productList = document.getElementById('product-list');
+    const cartItems = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('total');
+
+    let cart = [];
+
+    products.forEach((prod, index) => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="https://via.placeholder.com/200x150?text=${prod.name.replace(/ /g, "+")}" />
+        <h3>${prod.name}</h3>
+        <p>₹${prod.price}</p>
+        <button onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      productList.appendChild(div);
+    });
+
+    function addToCart(index) {
+      const item = products[index];
+      cart.push(item);
+      displayCart();
     }
 
-    function showCart() {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let cartItems = document.getElementById('cartItems');
-      let total = 0;
+    function displayCart() {
       cartItems.innerHTML = '';
-      cart.forEach((item, index) => {
+      let total = 0;
+      cart.forEach((item, i) => {
         total += item.price;
-        cartItems.innerHTML += `
-          <div class="cart-item">
-            <span>${item.name} - Rs. ${item.price}</span>
-            <button onclick="removeItem(${index})">Remove</button>
-          </div>
-        `;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeItem(${i})">Remove</button>`;
+        cartItems.appendChild(div);
       });
-      document.getElementById('total').innerText = total;
+      totalDisplay.innerText = `Total: ₹${total}`;
     }
 
     function removeItem(index) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      showCart();
+      displayCart();
     }
 
     function placeOrder() {
-      const name = document.getElementById('buyerName').value;
-      const address = document.getElementById('buyerAddress').value;
-      const phone = document.getElementById('buyerPhone').value;
-      const note = document.getElementById('buyerNote').value;
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      if (!name || !address || !phone || cart.length === 0) {
-        alert("Please fill all fields and add at least one product to cart.");
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      if (!name || !phone || !address || cart.length === 0) {
+        alert('Please fill all fields and add items to cart.');
         return;
       }
 
-      let orderSummary = `New Order:\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nNote: ${note}\n\nItems:\n`;
+      let orderMsg = `New Order from MKS Wonders%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:`;
+      let total = 0;
       cart.forEach(item => {
-        orderSummary += `- ${item.name} (Rs. ${item.price})\n`;
+        orderMsg += `%0A- ${item.name} (₹${item.price})`;
+        total += item.price;
       });
+      orderMsg += `%0A%0ATotal: ₹${total}`;
 
-      alert(orderSummary);
-      localStorage.removeItem('cart');
-      showCart();
-    }
-
-    // Auto-load cart on page load
-    window.onload = showCart;
-  </script></body>
-</html>
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MKS Wonders - Home</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>MKS Wonders</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#books">Books</a>
-      <a href="#toys">Toys</a>
-      <a href="#stationery">Stationery</a>
-      <a href="#gifts">Gifts</a>
-      <a href="#birthday">Birthday Items</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-  </header>  <section class="hero">
-    <h2>Welcome to MKS Wonders</h2>
-    <p>Books, Toys, Stationery, Gifts & More – Delivered with Wonder!</p>
-  </section>  <section id="products" class="product-grid">
-    <!-- Sample Products -->
-    <div class="product" data-category="books">
-      <img src="https://via.placeholder.com/200x150" alt="Book">
-      <h3>Magic of Words</h3>
-      <p>Rs. 299</p>
-      <button onclick="addToCart('Magic of Words', 299)">Add to Cart</button>
-    </div><div class="product" data-category="toys">
-  <img src="https://via.placeholder.com/200x150" alt="Toy">
-  <h3>Robo Car</h3>
-  <p>Rs. 499</p>
-  <button onclick="addToCart('Robo Car', 499)">Add to Cart</button>
-</div>
-
-<div class="product" data-category="stationery">
-  <img src="https://via.placeholder.com/200x150" alt="Stationery">
-  <h3>Creative Pen Set</h3>
-  <p>Rs. 199</p>
-  <button onclick="addToCart('Creative Pen Set', 199)">Add to Cart</button>
-</div>
-
-<div class="product" data-category="gifts">
-  <img src="https://via.placeholder.com/200x150" alt="Gift">
-  <h3>Mini Teddy Gift Box</h3>
-  <p>Rs. 349</p>
-  <button onclick="addToCart('Mini Teddy Gift Box', 349)">Add to Cart</button>
-</div>
-
-<div class="product" data-category="birthday">
-  <img src="https://via.placeholder.com/200x150" alt="Birthday">
-  <h3>Birthday Decoration Kit</h3>
-  <p>Rs. 599</p>
-  <button onclick="addToCart('Birthday Decoration Kit', 599)">Add to Cart</button>
-</div>
-
-  </section>  <script>
-    function addToCart(name, price) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({ name, price });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${name} added to cart!`);
+      const whatsappNumber = ''; // 8433076349<-- Put your number here like 919876543210
+      window.open(`https://wa.me/${whatsappNumber}?text=${orderMsg}`, '_blank');
     }
   </script></body>
-</html>
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Madhur's Store</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-    header {
-      background-color: #00bcd4;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-    }
-    .product p {
-      margin: 5px 0;
-    }
-    .add-btn {
-      background-color: #00bcd4;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <header>Madhur's E-Commerce Store</header>  <section class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Product 1">
-      <h3>Smart Watch</h3>
-      <p>Rs. 1999</p>
-      <button class="add-btn" onclick="alert('Added Smart Watch to cart!')">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Product 2">
-      <h3>Bluetooth Speaker</h3>
-      <p>Rs. 999</p>
-      <button class="add-btn" onclick="alert('Added Speaker to cart!')">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Product 3">
-      <h3>Wireless Earbuds</h3>
-      <p>Rs. 1499</p>
-      <button class="add-btn" onclick="alert('Added Earbuds to cart!')">Add to Cart</button>
-    </div>
-  </section>
-</body>
 </html>
