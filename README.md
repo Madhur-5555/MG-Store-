@@ -1,4 +1,30 @@
-![20230621_163556](https://github.com/user-attachments/assets/acc0a42b-de88-4ee3-b68c-f9ec4675466d
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MG Logo</title>
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .logo {
+      width: 250px;
+      height: auto;
+      border: 5px solid gold;
+      border-radius: 20px;
+      padding: 10px;
+      background-color: #111;
+    }
+  </style>
+</head>
+<body>
+  <img src="mg-logo.jpg" alt="MG Logo" class="logo">
+</body>
+</html>
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
