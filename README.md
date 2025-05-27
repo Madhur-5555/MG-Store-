@@ -104,7 +104,7 @@
       });
       orderMsg += `%0A%0ATotal: ₹${total}`;
 
-      const whatsappNumber = '918433076349'; //
+      const whatsappNumber = '918433076349';
       window.open(`https://wa.me/${qr/LWVNIF3SLAU7K1}?text=${orderMsg}`, '_blank');
     }
   </script></body>
