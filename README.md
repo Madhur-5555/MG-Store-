@@ -1,5 +1,71 @@
 <!DOCTYPE html><html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MKS Wonders - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>MKS Wonders</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#books">Books</a>
+      <a href="#toys">Toys</a>
+      <a href="#stationery">Stationery</a>
+      <a href="#gifts">Gifts</a>
+      <a href="#birthday">Birthday Items</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>  <section class="hero">
+    <h2>Welcome to MKS Wonders</h2>
+    <p>Books, Toys, Stationery, Gifts & More – Delivered with Wonder!</p>
+  </section>  <section id="products" class="product-grid">
+    <!-- Sample Products -->
+    <div class="product" data-category="books">
+      <img src="https://via.placeholder.com/200x150" alt="Book">
+      <h3>Magic of Words</h3>
+      <p>Rs. 299</p>
+      <button onclick="addToCart('Magic of Words', 299)">Add to Cart</button>
+    </div><div class="product" data-category="toys">
+  <img src="https://via.placeholder.com/200x150" alt="Toy">
+  <h3>Robo Car</h3>
+  <p>Rs. 499</p>
+  <button onclick="addToCart('Robo Car', 499)">Add to Cart</button>
+</div>
+
+<div class="product" data-category="stationery">
+  <img src="https://via.placeholder.com/200x150" alt="Stationery">
+  <h3>Creative Pen Set</h3>
+  <p>Rs. 199</p>
+  <button onclick="addToCart('Creative Pen Set', 199)">Add to Cart</button>
+</div>
+
+<div class="product" data-category="gifts">
+  <img src="https://via.placeholder.com/200x150" alt="Gift">
+  <h3>Mini Teddy Gift Box</h3>
+  <p>Rs. 349</p>
+  <button onclick="addToCart('Mini Teddy Gift Box', 349)">Add to Cart</button>
+</div>
+
+<div class="product" data-category="birthday">
+  <img src="https://via.placeholder.com/200x150" alt="Birthday">
+  <h3>Birthday Decoration Kit</h3>
+  <p>Rs. 599</p>
+  <button onclick="addToCart('Birthday Decoration Kit', 599)">Add to Cart</button>
+</div>
+
+  </section>  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    }
+  </script></body>
+</html>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madhur's Store</title>
