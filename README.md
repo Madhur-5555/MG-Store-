@@ -104,8 +104,8 @@
       });
       orderMsg += `%0A%0ATotal: ₹${total}`;
 
-      const whatsappNumber = '918433076349'; // <-- Put your number here like 919876543210
-      window.open(`https://wa.me/${{whatsappNumber}?text=${orderMsg}`, '_blank');
+      const whatsappNumber = '918433076349';
+      window.open(`https://wa.me/${whatsappNumber}?text=${orderMsg}`, '_blank');
     }
   </script></body>
 </html>
