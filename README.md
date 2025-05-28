@@ -1,145 +1,148 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MKS Wonders - Full E-commerce Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MKS Wonders</title>
   <style>
+    :root {
+      --bg-color: #f5f5f5;
+      --text-color: #000;
+      --card-bg: #fff;
+    }
     body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
       transition: background-color 0.3s, color 0.3s;
     }
-    header {
-      background: linear-gradient(to right, #ff6f61, #ffcc70);
+    .dark-mode {
+      --bg-color: #222;
+      --text-color: #fff;
+      --card-bg: #333;
+    }
+    header, footer {
+      background-color: #ff6f61;
       color: white;
       padding: 20px;
       text-align: center;
     }
     .banner {
-      background-image: url('https://via.placeholder.com/1200x200?text=Happy+Festive+Shopping+at+MKS+Wonders');
+      background: url('https://via.placeholder.com/1200x200?text=Festive+Sale+on+MKS+Wonders') no-repeat center;
       background-size: cover;
-      background-position: center;
-      padding: 60px 20px;
-      color: white;
+      padding: 50px;
       text-align: center;
+      color: white;
       font-size: 24px;
     }
     .search-bar {
       text-align: center;
-      padding: 10px;
+      padding: 20px;
     }
     .search-bar input {
       padding: 10px;
-      width: 50%;
-      border-radius: 10px;
+      width: 60%;
+      border-radius: 8px;
       border: 1px solid #ccc;
     }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .product {
+      background: var(--card-bg);
+      color: var(--text-color);
       border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 16px;
-      background: white;
-      margin: 20px;
-      width: 250px;
-      display: inline-block;
-      vertical-align: top;
+      border-radius: 10px;
+      margin: 15px;
+      padding: 15px;
+      width: 260px;
     }
     .product img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-    .tags {
-      margin: 5px 0;
-    }
-    .best-seller, .discount, .stock-warning {
-      display: inline-block;
-      margin-right: 5px;
-      padding: 2px 6px;
-      border-radius: 5px;
+    .product .tags span {
       font-size: 12px;
+      margin-right: 5px;
+      padding: 2px 5px;
+      border-radius: 5px;
       color: white;
     }
     .best-seller { background: red; }
     .discount { background: green; }
     .stock-warning { background: orange; }
-    .review {
-      font-size: 14px;
-      color: #333;
-    }
-    .wishlist {
-      color: red;
+    .wishlist { color: red; cursor: pointer; }
+    .gift-option { margin-top: 10px; }
+    .btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
+      margin-top: 10px;
     }
-    .faq, .gift-option {
-      background: #fff;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-    }
-    .dark-mode {
-      background-color: #222;
-      color: white;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: white;
+    footer p {
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>MKS Wonders 🛍️</h1>
-    <p>Books, Toys, Stationery, Gifts & Birthday Items</p>
-    <button onclick="toggleDarkMode()">🌙 Toggle Dark/Light Mode</button>
+    <p>Books, Toys, Stationery, Gifts & More</p>
+    <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
   </header>  <div class="banner">
-    ✨ Celebrate Your Moments With MKS Wonders – Festive Offers Running! ✨
+    🎉 Celebrate Special Moments with MKS Wonders 🎉
   </div>  <div class="search-bar">
-    <input type="text" id="search" placeholder="Search for products..." onkeyup="filterProducts()" />
-  </div>  <!-- Product Example -->  <div class="product" data-name="Magic Birthday Kit">
-    <div class="tags">
-      <span class="best-seller">Best Seller</span>
-      <span class="discount">10% OFF</span>
-      <span class="stock-warning">Only 2 left!</span>
+    <input type="text" id="search" onkeyup="filterProducts()" placeholder="Search products...">
+  </div>  <div class="products" id="product-list">
+    <div class="product" data-name="Toy Car">
+      <div class="tags">
+        <span class="best-seller">Best Seller</span>
+        <span class="discount">15% OFF</span>
+        <span class="stock-warning">Hurry! 3 left</span>
+      </div>
+      <img src="https://via.placeholder.com/260x200" alt="Toy Car">
+      <h3>Toy Car</h3>
+      <p>Customer: Somya ⭐⭐⭐⭐⭐</p>
+      <p class="wishlist" onclick="alert('Added to wishlist!')">❤️ Add to Wishlist</p>
+      <div class="gift-option">
+        <input type="checkbox"> 🎁 Gift Wrap
+      </div>
+      <input type="text" id="custName" placeholder="Your Name" style="width: 100%; margin-top: 8px;"><br>
+      <input type="text" id="custAddress" placeholder="Your Address" style="width: 100%; margin-top: 8px;"><br>
+      <input type="number" id="custPhone" placeholder="Your Phone" style="width: 100%; margin-top: 8px;"><br>
+      <button class="btn" onclick="placeOrder()">🛒 Place Order on WhatsApp</button>
     </div>
-    <img src="https://via.placeholder.com/250x200" alt="Product Image">
-    <h3>Magic Birthday Kit</h3>
-    <p class="review"><strong>Ayushi Verma:</strong> Loved it! 💖</p>
-    <p class="wishlist" onclick="alert('Added to wishlist')">❤️ Add to Wishlist</p>
-    <div class="gift-option">
-      <label><input type="checkbox"> 🎁 Want Gift Wrapping?</label>
-    </div>
-    <button onclick="placeOrder()">Place Order via WhatsApp</button>
-  </div>  <!-- FAQ Section -->  <div class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <p><strong>Shipping Time?</strong> 3-5 Days across India.</p>
-    <p><strong>Return Policy?</strong> Easy 7-day return policy.</p>
-    <p><strong>Payment Options?</strong> UPI, Paytm, COD.</p>
   </div>  <footer>
-    <p>© 2025 MKS Wonders. All rights reserved.</p>
-    <p>Customer of the Week: <strong>Khushi Goyal</strong> 🎉</p>
+    <p>📞 Customer Care: +91XXXXXXXXXX</p>
+    <p>© 2025 MKS Wonders | Powered with ❤️</p>
   </footer>  <script>
     function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-
-    function placeOrder() {
-      let message = "Hello MKS Wonders! I want to place an order for Magic Birthday Kit. My details are: Name, Address, Phone.";
-      let whatsappNumber = "918433076349"; // Add your number here e.g. 91xxxxxxxxxx
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+      document.body.classList.toggle('dark-mode');
     }
 
     function filterProducts() {
-      const input = document.getElementById("search").value.toLowerCase();
-      const products = document.querySelectorAll(".product");
-      products.forEach(product => {
-        const name = product.getAttribute("data-name").toLowerCase();
-        product.style.display = name.includes(input) ? "inline-block" : "none";
+      let input = document.getElementById("search").value.toLowerCase();
+      let products = document.querySelectorAll(".product");
+      products.forEach(p => {
+        let name = p.getAttribute("data-name").toLowerCase();
+        p.style.display = name.includes(input) ? "block" : "none";
       });
+    }
+
+    function placeOrder() {
+      let name = document.getElementById('custName').value;
+      let address = document.getElementById('custAddress').value;
+      let phone = document.getElementById('custPhone').value;
+      let msg = `Hello, I want to order Toy Car.\nName: ${name}\nAddress: ${address}\nPhone: ${phone}`;
+      let number = "918433076349"; // Add your number here like 91XXXXXXXXXX
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
     }
   </script></body>
 </html>
