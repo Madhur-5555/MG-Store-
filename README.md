@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MKS Wonders</title>
   <style>
     :root {
@@ -44,6 +43,7 @@
       font-size: 28px;
       font-weight: bold;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
     .search-bar {
       text-align: center;
@@ -68,13 +68,24 @@
       margin: 15px;
       padding: 15px;
       width: 260px;
-      text-align: center;
     }
     .product img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
+    .product .tags span {
+      font-size: 12px;
+      margin-right: 5px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: white;
+    }
+    .best-seller { background: red; }
+    .discount { background: green; }
+    .stock-warning { background: orange; }
+    .Add-to-cart { color: red; cursor: pointer; }
+    .gift-option { margin-top: 10px; }
     .btn {
       background-color: #28a745;
       color: white;
@@ -84,60 +95,45 @@
       cursor: pointer;
       margin-top: 10px;
     }
-    .cart {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      border-top: 2px dashed #aaa;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0;
-    }
-    input, textarea {
-      width: 100%;
-      margin: 8px 0;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    footer p {
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>MKS Wonders 🛍️</h1>
+    <h1>MKS Wonders 🏍️</h1>
     <p>Books, Toys, Stationery, Gifts & More</p>
     <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-  </header>
-
-  <div class="banner">
-    <div class="text-box">🎉 Celebrate Special Moments with MKS Wonders 🎉</div>
-  </div>
-
-  <div class="search-bar">
+  </header>  <div class="banner">
+    <div class="text-box">
+      🎉 Celebrate Special Moments with MKS Wonders 🎉
+    </div>
+  </div>  <div class="search-bar">
     <input type="text" id="search" onkeyup="filterProducts()" placeholder="Search products...">
-  </div>
-
-  <div class="products" id="product-list"></div>
-
-  <div class="cart" id="cart">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <h3 id="total">Total: ₹0</h3>
-    <h3>Place Your Order</h3>
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="tel" id="phone" placeholder="Your Phone Number" required>
-    <textarea id="address" placeholder="Delivery Address" required></textarea>
-    <button class="btn" onclick="placeOrder()">🟢 Place Order on WhatsApp</button>
-  </div>
-
-  <footer>
+  </div>  <div class="products" id="product-list">
+    <div class="product" data-name="Toy Car">
+      <div class="tags">
+        <span class="best-seller">Best Seller</span>
+        <span class="discount">15% OFF</span>
+        <span class="stock-warning">Hurry! 3 left</span>
+      </div>
+      <img src="https://via.placeholder.com/260x200" alt="Toy Car">
+      <h3>Toy Car</h3>
+      <p>Customer: Somya ⭐⭐⭐⭐⭐</p>
+      <p class="Add-to-cart" onclick="alert('Added to cart!')">❤️ Add to cart</p>
+      <div class="gift-option">
+        <input type="checkbox"> 🏱 Gift Wrap
+      </div>
+      <input type="text" id="custName" placeholder="Your Name" style="width: 100%; margin-top: 8px;"><br>
+      <input type="text" id="custAddress" placeholder="Your Address" style="width: 100%; margin-top: 8px;"><br>
+      <input type="number" id="custPhone" placeholder="Your Phone" style="width: 100%; margin-top: 8px;"><br>
+      <button class="btn" onclick="placeOrder()">🛒 Place Order via WhatsApp</button>
+    </div>
+  </div>  <footer>
     <p>📞 Customer Care: +91XXXXXXXXXX</p>
-    <p>© 2025 MKS Wonders | Powered by Madhur Gupta</p>
-  </footer>
-
-  <script>
+    <p>© 2025 MKS Wonders | Powered with Madhur Gupta</p>
+  </footer>  <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
@@ -167,12 +163,11 @@
     products.forEach((prod, index) => {
       const div = document.createElement('div');
       div.className = 'product';
-      div.setAttribute('data-name', prod.name);
       div.innerHTML = `
-        <img src="https://via.placeholder.com/260x200?text=${prod.name.replace(/ /g, "+")}" />
+        <img src="https://via.placeholder.com/200x150?text=${prod.name.replace(/ /g, "+")}" />
         <h3>${prod.name}</h3>
         <p>₹${prod.price}</p>
-        <button class="btn" onclick="addToCart(${index})">➕ Add to Cart</button>
+        <button onclick="addToCart(${index})">Add to Cart</button>
       `;
       productList.appendChild(div);
     });
@@ -190,7 +185,7 @@
         total += item.price;
         const div = document.createElement('div');
         div.className = 'cart-item';
-        div.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeItem(${i})">❌ Remove</button>`;
+        div.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeItem(${i})">Remove</button>`;
         cartItems.appendChild(div);
       });
       totalDisplay.innerText = `Total: ₹${total}`;
@@ -202,11 +197,12 @@
     }
 
     function placeOrder() {
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const address = document.getElementById('address').value.trim();
+      const name = document.getElementById('name')?.value.trim() || document.getElementById('custName')?.value.trim();
+      const phone = document.getElementById('phone')?.value.trim() || document.getElementById('custPhone')?.value.trim();
+      const address = document.getElementById('address')?.value.trim() || document.getElementById('custAddress')?.value.trim();
+
       if (!name || !phone || !address || cart.length === 0) {
-        alert('Please fill all fields and add at least one item to cart.');
+        alert('Please fill all fields and add items to cart.');
         return;
       }
 
@@ -221,6 +217,5 @@
       const whatsappNumber = '918433076349';
       window.open(`https://wa.me/${whatsappNumber}?text=${orderMsg}`, '_blank');
     }
-  </script>
-</body>
+  </script></body>
 </html>
